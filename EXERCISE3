@@ -1,27 +1,54 @@
-class Athlete:
-    def __init__(self, name, age, sport):
-        self.name = name
-        self.age = age
-        self.sport = sport
+import java.util.LinkedList;
+import java.util.Queue;
 
-def print_athlete_details(athletes_queue):
-    print("Details of each athlete:")
-    for athlete in athletes_queue:
-        print(f"Name: {athlete.name}, Age: {athlete.age}, Sport: {athlete.sport}")
+class Athlete {
+    private String name;
+    private int age;
+    private String sport;
 
-# Creating a queue of athletes
-athletes_queue = [
-    Athlete("John Doe", 25, "Basketball"),
-    Athlete("Jane Smith", 22, "Soccer"),
-    Athlete("Michael Johnson", 30, "Track and Field"),
-    Athlete("Emily Brown", 28, "Swimming"),
-    Athlete("David Lee", 27, "Tennis"),
-    Athlete("Sarah Adams", 23, "Gymnastics"),
-    Athlete("Robert Turner", 29, "Cycling"),
-    Athlete("Lisa Wilson", 26, "Volleyball"),
-    Athlete("Ryan Clark", 31, "Baseball"),
-    Athlete("Olivia Green", 24, "Hockey"),
-]
+    public Athlete(String name, int age, String sport) {
+        this.name = name;
+        this.age = age;
+        this.sport = sport;
+    }
 
-# Printing the details of each athlete
-print_athlete_details(athletes_queue)
+    // Getters and setters (optional)
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getSport() {
+        return sport;
+    }
+}
+
+public class Main {
+    public static void printAllAthletes(Queue<Athlete> athletesQueue) {
+        System.out.println("Details of all athletes:");
+        for (Athlete athlete : athletesQueue) {
+            System.out.println("Name: " + athlete.getName() + ", Age: " + athlete.getAge() + ", Sport: " + athlete.getSport());
+        }
+    }
+
+    public static void main(String[] args) {
+        Queue<Athlete> athletesQueue = new LinkedList<>();
+
+        // Creating 10 athletes and adding them to the queue
+        athletesQueue.add(new Athlete("John Doe", 25, "Basketball"));
+        athletesQueue.add(new Athlete("Jane Smith", 22, "Soccer"));
+        athletesQueue.add(new Athlete("Michael Johnson", 30, "Track and Field"));
+        athletesQueue.add(new Athlete("Emily Brown", 28, "Swimming"));
+        athletesQueue.add(new Athlete("David Lee", 27, "Tennis"));
+        athletesQueue.add(new Athlete("Sarah Adams", 23, "Gymnastics"));
+        athletesQueue.add(new Athlete("Robert Turner", 29, "Cycling"));
+        athletesQueue.add(new Athlete("Lisa Wilson", 26, "Volleyball"));
+        athletesQueue.add(new Athlete("Ryan Clark", 31, "Baseball"));
+        athletesQueue.add(new Athlete("Olivia Green", 24, "Hockey"));
+
+        printAllAthletes(athletesQueue);
+    }
+}
