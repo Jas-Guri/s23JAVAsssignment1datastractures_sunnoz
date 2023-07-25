@@ -1,30 +1,69 @@
-class BookLinkedList:
-    # ... (previous methods and Node class remain the same)
+class Node {
+    int data;
+    Node next;
 
-    def print_forward(self):
-        current = self.head
-        while current:
-            print(f"Title: {current.title}, Author: {current.author}, Year: {current.publication_year}")
-            current = current.next
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
 
-    def print_students_in_reverse(self):
-        def recursive_reverse_print(node):
-            if node is None:
-                return
-            recursive_reverse_print(node.next)
-            print(f"Title: {node.title}, Author: {node.author}, Year: {node.publication_year}")
+class LinkedList {
+    Node head;
 
-        print("List of books in reverse order:")
-        recursive_reverse_print(self.head)
+    public LinkedList() {
+        this.head = null;
+    }
 
-# Example usage:
-book_list = BookLinkedList()
-book_list.add_to_beginning("Book 1", "Author 1", 2000)
-book_list.add_to_end("Book 2", "Author 2", 2010)
-book_list.add_to_end("Book 3", "Author 3", 2020)
+    public void addNode(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
 
-print("List of books in forward order:")
-book_list.print_forward()
+    public void printStudentsForward() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
 
-print("\nList of books in reverse order:")
-book_list.print_students_in_reverse()
+    public void printStudentsInReverse() {
+        printStudentsInReverseRecursively(head);
+        System.out.println();
+    }
+
+    private void printStudentsInReverseRecursively(Node node) {
+        if (node == null) {
+            return;
+        }
+        printStudentsInReverseRecursively(node.next);
+        System.out.print(node.data + " ");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addNode(1);
+        linkedList.addNode(2);
+        linkedList.addNode(3);
+        linkedList.addNode(4);
+        linkedList.addNode(5);
+
+        System.out.println("Forward:");
+        linkedList.printStudentsForward();
+
+        System.out.println("Backward:");
+        linkedList.printStudentsInReverse();
+    }
+}
