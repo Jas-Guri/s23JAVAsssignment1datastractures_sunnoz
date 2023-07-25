@@ -1,0 +1,30 @@
+class BookLinkedList:
+    # ... (previous methods and Node class remain the same)
+
+    def print_forward(self):
+        current = self.head
+        while current:
+            print(f"Title: {current.title}, Author: {current.author}, Year: {current.publication_year}")
+            current = current.next
+
+    def print_students_in_reverse(self):
+        def recursive_reverse_print(node):
+            if node is None:
+                return
+            recursive_reverse_print(node.next)
+            print(f"Title: {node.title}, Author: {node.author}, Year: {node.publication_year}")
+
+        print("List of books in reverse order:")
+        recursive_reverse_print(self.head)
+
+# Example usage:
+book_list = BookLinkedList()
+book_list.add_to_beginning("Book 1", "Author 1", 2000)
+book_list.add_to_end("Book 2", "Author 2", 2010)
+book_list.add_to_end("Book 3", "Author 3", 2020)
+
+print("List of books in forward order:")
+book_list.print_forward()
+
+print("\nList of books in reverse order:")
+book_list.print_students_in_reverse()
