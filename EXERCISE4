@@ -1,0 +1,50 @@
+class Student {
+    private String name;
+    private int age;
+    private String rollNumber;
+
+    public Student(String name, int age, String rollNumber) {
+        this.name = name;
+        this.age = age;
+        this.rollNumber = rollNumber;
+    }
+
+    // Getters and setters (optional)
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getRollNumber() {
+        return rollNumber;
+    }
+}
+
+public class Main {
+    public static void printAllStudents(Student[] students) {
+        System.out.println("Details of all students:");
+        for (Student student : students) {
+            System.out.println("Name: " + student.getName() + ", Age: " + student.getAge() + ", Roll Number: " + student.getRollNumber());
+        }
+    }
+
+    public static void main(String[] args) {
+        Student[] students = {
+            new Student("John Doe", 25, "A101"),
+            new Student("Jane Smith", 22, "A102"),
+            new Student("Michael Johnson", 30, "A103"),
+            new Student("Emily Brown", 28, "A104"),
+            new Student("David Lee", 27, "A105"),
+            new Student("Sarah Adams", 23, "A106"),
+            new Student("Robert Turner", 29, "A107"),
+            new Student("Lisa Wilson", 26, "A108"),
+            new Student("Ryan Clark", 31, "A109"),
+            new Student("Olivia Green", 24, "A110")
+        };
+
+        printAllStudents(students);
+    }
+}
